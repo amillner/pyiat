@@ -1,0 +1,160 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pyiat &#8212; pyiat 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installing pyiat" href="install.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="install.html" title="Installing pyiat"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">pyiat 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pyiat">
+<h1>pyiat<a class="headerlink" href="#pyiat" title="Permalink to this headline">¶</a></h1>
+<p>pyiat analyzes data from the Implicit Association Test (IAT) consistent with the standard IAT scoring algorithm (Greenwald et al., 2003) and Brief IAT scoring algorithm (Nosek et al., 2014)</p>
+<blockquote>
+<div><p>Greenwald, A. G., Nosek, B. A., &amp; Banaji, M. R. (2003). Understanding and using the Implicit Association Test: I. An improved scoring algorithm. Journal of Personality and Social Psychology, 85(2), 197–216. <a class="reference external" href="https://doi.org/10.1037/0022-3514.85.2.197">https://doi.org/10.1037/0022-3514.85.2.197</a></p>
+<p>Nosek, B. A., Bar-Anan, Y., Sriram, N., Axt, J., &amp; Greenwald, A. G. (2014). Understanding and Using the Brief Implicit Association Test: Recommended Scoring Procedures. PLOS ONE, 9(12), e110938. <a class="reference external" href="https://doi.org/10.1371/journal.pone.0110938">https://doi.org/10.1371/journal.pone.0110938</a></p>
+</div></blockquote>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<p>pyiat currently supports:</p>
+<ul class="simple">
+<li>Analysis of the IAT and Brief IAT (BIAT)</li>
+<li>IAT can be analyzed with weighted or unweighted algorithm</li>
+<li>BIAT can include 1, 2, or 3 blocks</li>
+<li>Obtain D scores for each stimulus (e.g. word)</li>
+<li>Output includes overall error percentage as well as error percentages by block (if using a weighted score) and by condition</li>
+<li>Same output (overall, by block, by condition) for trials considered too fast or too slow</li>
+<li>Can set reaction time for trials considered too fast or too slow</li>
+<li>Can set cutoffs for errortoo fasttoo slow flags indiciating that a participant is excluded for poor performance</li>
+<li>Can print output to Excel</li>
+</ul>
+</div>
+<div class="section" id="source-code">
+<h2>Source code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
+<p>You can access the source code at: <a class="reference external" href="https://github.com/amillner/pyiat">https://github.com/amillner/pyiat</a></p>
+</div>
+<div class="section" id="how-to-get-help-or-provide-feedback">
+<h2>How to get help or provide feedback<a class="headerlink" href="#how-to-get-help-or-provide-feedback" title="Permalink to this headline">¶</a></h2>
+<p>For help or feedback, please enter an ‘issue on Github’_</p>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing pyiat</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="userguide.html#installing-pyiat">Installing pyiat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="userguide.html#importing-pyiat">Importing pyiat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="userguide.html#using-pyiat">Using pyiat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="userguide.html#additional-features">Additional features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="userguide.html#additional-options">Additional options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arguments.html">Arguments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arguments.html#analyze-implicit-association-test-data">Analyze Implicit Association Test data</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pyiat</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#source-code">Source code</a></li>
+<li><a class="reference internal" href="#how-to-get-help-or-provide-feedback">How to get help or provide feedback</a></li>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="next chapter">Installing pyiat</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="install.html" title="Installing pyiat"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">pyiat 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Alexander Millner.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+v.02
+fixed a bug that preventing excel file to be written 
+removed explicit import of ExcelWriter in pandas and instead just used pd.ExcelWriter()
+added changelog.txt
+
+v.01
+Initial release

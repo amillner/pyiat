@@ -1,0 +1,182 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>User Guide &#8212; pyiat 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Arguments" href="arguments.html" />
+    <link rel="prev" title="Installing pyiat" href="install.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="arguments.html" title="Arguments"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installing pyiat"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyiat 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<p>To use pyiat, data from the Implicit Association Test (IAT) or Brief IAT (BIAT) must contain all trials for all subjects in a pandas DataFrame. If the IAT/BIAT paradigm software produces single files for each participant, then you must concatanate all these data together into a single file and import into pandas prior to using pyiat.</p>
+<div class="section" id="installing-pyiat">
+<h2>Installing pyiat<a class="headerlink" href="#installing-pyiat" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyiat</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="importing-pyiat">
+<h2>Importing pyiat<a class="headerlink" href="#importing-pyiat" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyiat</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-pyiat">
+<h2>Using pyiat<a class="headerlink" href="#using-pyiat" title="Permalink to this headline">¶</a></h2>
+<p>To run the standard weighted IAT scoring algorithm enter</p>
+<ul class="simple">
+<li>the pandas dataframe containing raw IAT data (all trials for all subjects together)</li>
+<li>name of column containing subject numbers</li>
+<li>name of column containing reaction time</li>
+<li>name of column containing the condition for each trial</li>
+<li>name of column containing accuracy where 1 is correct and 0 is an error (see Additional Options below for information on entering a column where errors are 1 and correct trials are 0)</li>
+<li>the name of each condition (maximum 2)</li>
+<li>name of the column containing block number and</li>
+<li>a list of which 4 blocks to score</li>
+</ul>
+<p>It will return a dataframe containing error percentages, percentages of too fast/too slow trials, poor performance flags (e.g. a subject made more errors than the cutoff for poor performance) and D scores.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="o">=</span><span class="n">pyiat</span><span class="o">.</span><span class="n">analyze_iat</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">subject</span><span class="o">=</span><span class="s1">&#39;subjnum&#39;</span><span class="p">,</span><span class="n">rt</span><span class="o">=</span><span class="s1">&#39;latency&#39;</span><span class="p">,</span><span class="n">condition</span><span class="o">=</span><span class="s1">&#39;condition&#39;</span><span class="p">,</span><span class="n">correct</span><span class="o">=</span><span class="s1">&#39;correct&#39;</span><span class="p">,</span><span class="n">cond1</span><span class="o">=</span><span class="s1">&#39;Death/Not Me,Life/Me&#39;</span><span class="p">,</span><span class="n">cond2</span><span class="o">=</span><span class="s1">&#39;Life/Not Me,Death/Me&#39;</span><span class="p">,</span><span class="n">block</span><span class="o">=</span><span class="s1">&#39;block&#39;</span><span class="p">,</span><span class="n">blocks</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>To run an unweighted IAT scoring algorithm just add the argument ‘weighted = True’. The unweighted algorithm will not provide output by block.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="o">=</span><span class="n">pyiat</span><span class="o">.</span><span class="n">analyze_iat</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">subject</span><span class="o">=</span><span class="s1">&#39;subjnum&#39;</span><span class="p">,</span><span class="n">rt</span><span class="o">=</span><span class="s1">&#39;latency&#39;</span><span class="p">,</span><span class="n">condition</span><span class="o">=</span><span class="s1">&#39;condition&#39;</span><span class="p">,</span><span class="n">correct</span><span class="o">=</span><span class="s1">&#39;correct&#39;</span><span class="p">,</span><span class="n">cond1</span><span class="o">=</span><span class="s1">&#39;Death/Not Me,Life/Me&#39;</span><span class="p">,</span><span class="n">cond2</span><span class="o">=</span><span class="s1">&#39;Life/Not Me,Death/Me&#39;</span><span class="p">,</span> <span class="n">weighted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>For more details of the input, output and more examples of pyiat see the <a class="reference external" href="https://nbviewer.jupyter.org/github/amillner/pyiat/blob/master/example/pyiat_example.ipynb">Jupyter notebook</a> located on Github. There is also simulated data on <a class="reference external" href="https://github.com/amillner/pyiat/tree/master/example">Github</a> as well.</p>
+</div>
+</div>
+<div class="section" id="additional-features">
+<h2>Additional features<a class="headerlink" href="#additional-features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Setting reaction times considered too fast or too slow, set arguments ‘fast_rt’ and/or ‘slow_rt’, default : 400, 10000</li>
+<li>Can set flags for poor performance and exclusion criteria for errors, or fast and slow trials and can set by overall rates, rates by block or rates by condition.</li>
+<li>Can flag anyone who has less than a specific number of blocks, default : 4 (only applies to weighted algorothm)</li>
+<li>Can output a second dataframe containing the overall number and percentage of trials removed because they were too fast or too slow. Returns this information across all subjects as well as across just thost without flags for poor performance.</li>
+<li>Can analyze the Brief IAT by setting ‘biat’ argument to <em>True</em>. When analyzing the biat, you can set the number of trials to remove from the beginning of each block (‘biat_rmv_xtrls’, default : 4) but you have to give pyiat the column that contains the trial number for each trial in the argument ‘biat_trl_num’.</li>
+<li>Can return D score for each stimulus (word) in the IAT. This score can be weighted or unweighted, although weighted will return fewer scores because some blocks may not contain a word. This can be used with BIAT as well, although it is recommended you use unweighted as weighted results in many similar D scores because there is a word is often present only once a block.</li>
+</ul>
+<p>-See the :doc: ‘arguments’</p>
+</div>
+<div class="section" id="additional-options">
+<h2>Additional options<a class="headerlink" href="#additional-options" title="Permalink to this headline">¶</a></h2>
+<p>-Can enter an accuracy column where correct is 1 and errors are 0 (default) or where errors are 1 and correct or 0 by entering <em>error</em> for the argument ‘error_or_correct’.
+-Currently, pyiat reports percentage of errors prior to removing all trials where reaction time was too fast or too slow. Setting the argument ‘errors_after_fastslow_rmvd’ to <em>True</em> will calculate error rate after removing all too fast or too slow trials. This is the way the R package iat calculates error rate.
+-To return the nuumber of errors and too fasttoo slow trials rather than percentages set the ‘flag_outformat’ to <em>count</em>.
+-Output an Excel files with all returned data by setting ‘print_to_excel’ to <em>True</em>.</p>
+<p>-See the :doc: ‘arguments’</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">User Guide</a><ul>
+<li><a class="reference internal" href="#installing-pyiat">Installing pyiat</a></li>
+<li><a class="reference internal" href="#importing-pyiat">Importing pyiat</a></li>
+<li><a class="reference internal" href="#using-pyiat">Using pyiat</a><ul>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-features">Additional features</a></li>
+<li><a class="reference internal" href="#additional-options">Additional options</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="previous chapter">Installing pyiat</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="arguments.html"
+                        title="next chapter">Arguments</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/userguide.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="arguments.html" title="Arguments"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installing pyiat"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyiat 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Alexander Millner.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

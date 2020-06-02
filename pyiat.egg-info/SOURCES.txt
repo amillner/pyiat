@@ -1,0 +1,10 @@
+README.rst
+setup.py
+pyiat/__init__.py
+pyiat/pyiat.py
+pyiat.egg-info/PKG-INFO
+pyiat.egg-info/SOURCES.txt
+pyiat.egg-info/dependency_links.txt
+pyiat.egg-info/not-zip-safe
+pyiat.egg-info/requires.txt
+pyiat.egg-info/top_level.txt

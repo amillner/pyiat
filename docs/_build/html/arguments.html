@@ -1,0 +1,156 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Arguments &#8212; pyiat 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="User Guide" href="userguide.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="userguide.html" title="User Guide"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyiat 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="arguments">
+<h1>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="analyze-implicit-association-test-data">
+<h2>Analyze Implicit Association Test data<a class="headerlink" href="#analyze-implicit-association-test-data" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="descname">analyze_iat(df,subject,rt,correct,condition,cond1,cond2,block,[blocks=[2,3,5,6]],[weighted=True],[fast_rt=400],[slow_rt=10000],[overall_err_cut=.3],[cond_err_cut=.4],[block_err_cut=.4],[overall_fastslowRT_cut=.10],[cond_fastslowRT_cut=.25],[block_fastslowRT_cut=.25],[num_blocks_cutoff=4],[fastslow_stats=False],[biat=False],[biat_rmv_xtrls=4],[biat_trl_num=False],[error_or_correct='correct'],[errors_after_fastslow_rmvd=False],[flag_outformat='pct'],[print_to_excel=False],[each_stim=False],[stimulus=False]):</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe df</strong> (<em>pandas</em>) – Trial x trial IAT data for each subject</li>
+<li><strong>subject</strong> (<em>str</em>) – Column name containing subject number</li>
+<li><strong>rt</strong> (<em>str</em>) – Column name containing reaction time (in ms) for each trial</li>
+<li><strong>correct</strong> (<em>str</em>) – Column name containing whether trial was correct (where correct = 1, error = 0) (can also use if columns specifies errors; see ‘error_or_correct’ parameter)</li>
+<li><strong>condition</strong> (<em>str</em>) – Column name containing condition (e.g. Black-GoodWhite-Bad vs. Black-BadWhite-Good)</li>
+<li><strong>cond1</strong> (<em>str</em>) – Name of first condition (e.g. ‘Black-GoodWhite-Bad’): bias for this condition will result in negative D score</li>
+<li><strong>cond2</strong> (<em>str</em>) – Name of second condition (e.g. ‘Black-BadWhite-Good’): bias for this condition will result in positive D score</li>
+<li><strong>block</strong> (<em>str</em>) – Column that contains block information</li>
+<li><strong>blocks</strong> (<em>list</em>) – A list containing the numbers corresponding to the relevant blocks, default : [2,3,5,6]</li>
+<li><strong>weighted</strong> (<em>Boolean</em>) – If True return weighted D scores; if False return unweighted D scores, default : True</li>
+<li><strong>fast_rt</strong> (<em>int</em>) – Reaction time (in ms) considered too fast, default: 400</li>
+<li><strong>slow_rt</strong> (<em>int</em>) – Reaction time (in ms) considered too slow, default: 10000</li>
+<li><strong>overall_err_cut</strong> (<em>float</em>) – Cutoff for subject exclusion: overall error rate (decimal), default : .3</li>
+<li><strong>cond_err_cut</strong> (<em>float</em>) – Cutoff for subject exclusion: error rate (decimal) within each condition, default : .4</li>
+<li><strong>block_err_cut</strong> (<em>float</em>) – Cutoff for subject exclusion: error rate (decimal) within a single block, default : .4</li>
+<li><strong>overall_fastslowRT_cut</strong> (<em>float</em>) – Cutoff for subject exclusion: overall rate of trials with too fast or too slow RT (decimal), default : .1</li>
+<li><strong>cond_fastslowRT_cut</strong> (<em>float</em>) – Cutoff for subject exclusion: rate of trials with too fast or too slow RT (decimal) within each condition, default : .25</li>
+<li><strong>block_fastslowRT_cut</strong> (<em>float</em>) – Cutoff for subject exclusion: rate of trials with too fast or too slow RT (decimal) within each block, default : .25</li>
+<li><strong>num_blocks_cutoff</strong> (<em>int</em>) – Cutoff for subject exclusion: Minimum number of blocks required, default : 4</li>
+<li><strong>error_or_correct</strong> (<em>str</em>) – Enter ‘error’ to enter a column for ‘correct’ where error = 1, correct = 0, default: ‘correct’</li>
+<li><strong>errors_after_fastslow_rmvd</strong> (<em>Boolean</em>) – If True calculates error rates after removing all fastslow trials (similar to R package iat); if False error rates calculated with all trials, default : False</li>
+<li><strong>fastslow_stats</strong> (<em>Boolean</em>) – Return a second dataframe containing the number and percentage of fastslow trials across all subjects and across subjects with usable data, default : False</li>
+<li><strong>biat</strong> (<em>Boolean</em>) – Enter True if analyzing a Brief Implicit Assoc Test (BIAT), False if regular IAT, default : False</li>
+<li><strong>biat_rmv_xtrls</strong> (<em>int</em>) – Number of trials to remove from beginning of each block. BIAT recommendad scoring procedures (Nosek et al. 2014) remove first 4 trials of each block b/c they are practice trials but not all BIAT have practice trials, default : 4</li>
+<li><strong>biat_trl_num</strong> (<em>str</em>) – The name of the column that contains trial number, default : False</li>
+<li><strong>flag_outformat</strong> (<em>str</em>) – Can enter ‘count’ to return number of errors and too fastslow trials (if fastslow_stats set to True), default : ‘pct’</li>
+<li><strong>print_to_excel</strong> (<em>Boolean</em>) – Print an excel workbook that contains output, default : False</li>
+<li><strong>each_stim</strong> (<em>Boolean</em>) – Return D scores for each individual stimulus (i.e. word), default : False</li>
+<li><strong>stimulus</strong> (<em>Boolean</em>) – If each stim = True, then give name of column containing each stimulus (i.e. word), default : False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">pandas DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Arguments</a><ul>
+<li><a class="reference internal" href="#analyze-implicit-association-test-data">Analyze Implicit Association Test data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="userguide.html"
+                        title="previous chapter">User Guide</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/arguments.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="userguide.html" title="User Guide"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyiat 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Alexander Millner.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>
